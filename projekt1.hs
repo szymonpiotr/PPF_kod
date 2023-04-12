@@ -1,6 +1,6 @@
 {-
 Zad 1.
-Określi typ następującej funkcji.
+Określ typ następującej funkcji.
 transform f []     = []
 transform f (x:xs) = (f x):mapped f xs
 -}
@@ -42,5 +42,5 @@ general_rem_duplicates [(1,2), (1,2), (1,4)] = [(1,2), (1,4)]
 
 {-
 Zad 5.
-Stosując dowolną technikę oraz korzystająć z wbudowanego typu Bool, zdefiniuj (najkróćej jak potrafisz) implikację. 
+Stosując dowolną technikę oraz korzystając z wbudowanego typu Bool, zdefiniuj (najkróćej jak potrafisz) implikację. 
 -}

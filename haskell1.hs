@@ -149,3 +149,40 @@ palindrome = \xs -> reverse xs == xs
 nrazy :: Int -> (a -> a) -> a -> a
 nrazy n f | n==0 = \x -> x
           | otherwise = \x -> nrazy (n-1) f (f x)
+          
+
+data Tree a = Leaf a | Node (Tree a) (Tree a) deriving (Show)
+
+leaves :: Tree a -> Int
+leaves (Leaf _) = 1
+leaves (Node l r) = leaves l + leaves r
+
+balanced :: Tree a -> Bool
+balanced (Leaf _) = True
+balanced (Node l r) = abs (leaves l - leaves r) <= 1 && balanced l && balanced r
+
+splitt :: [Int] -> ([Int],[Int])
+splitt xs = splitAt k xs
+   where
+     k = (length xs) `div` 2
+
+balance :: [Int] -> Tree Int
+balance [x] = Leaf x
+balance xs = Node left right
+  where
+    left = balance (fst lista)
+    right = balance (snd lista)
+    lista = splitt xs
+
+treemap :: Tree a -> (a -> b) -> Tree b
+treemap (Leaf x) f = Leaf (f x)
+treemap (Node l r) f = Node left right
+    where
+      left = treemap l f
+      right = treemap r f
+
+data RoseTree a = NodeR a [RoseTree a] 
+
+treemapR ::  (a -> b) -> RoseTree a -> RoseTree b
+treemapR f (NodeR x list) = NodeR (f x) [treemapR f tree | tree <- list]
+          

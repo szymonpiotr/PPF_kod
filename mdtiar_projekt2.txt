@@ -1,0 +1,37 @@
+(*
+Zadanie 1. Na podstawie artykułu "Propositions as Types" Philipa Wadlera
+scharakteryzuj na czym polega izomorfizm Curry'ego-Howarda. Jaki związek ma logika
+z rachunkiem lambda i funkcyjnymi językami programowania. (ok 8 zdań)
+*)
+
+(*
+Zadanie 2. Używając Isabelle zdefiniuj nowy typ danych zawierający wartości
+boolowskie: Prawdę i Fałsz. Następnie zdefiniuj trzy spójniki: negację ("nie"), funkcję
+Sheffera ("ani") oraz równoważność (wtw). Udowodnij (jako lematy lub twierdzenia),
+używając sugestii Isabelle, następujące zależności:
+1. (ani p p) = (nie p)
+2. (wtw Prawda q) = q
+3. (wtw p q) = (wtw q p)
+*)
+
+(*
+Zadanie 3. Mając typ danych:
+
+datatype liczba = Zero | Nast liczba
+
+oraz definicję funkcji mnożenia i dodawania:
+
+fun dodaj:: "liczba ⇒ liczba ⇒ liczba" where
+"dodaj n Zero = n" |
+"dodaj n (Nast m) = Nast (dodaj n m)"
+
+fun mnoz:: "liczba ⇒ liczba ⇒ liczba" where
+"mnoz n Zero = Zero" |
+"mnoz n (Nast Zero) = n"|
+"mnoz n (Nast m) = dodaj n (mnoz n m)"
+
+zdefiniuj funkcję potęgowania: a^b będziemy
+oznaczać jako: "potega a b". Pokaż, że:
+
+- potega a (dodaj m n) = mnoz (potega a m) (potega a n)
+*)
